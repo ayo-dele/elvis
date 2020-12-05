@@ -1,6 +1,9 @@
 name: Build and upload
 
-on: [push, pull_request]
+on:
+  push:
+    tags:
+      - 'v*'  # Push events matching v*. i.e v1.0, v2.0
 
 jobs:
   build-and-upload:
@@ -10,3 +13,15 @@ jobs:
     - name: build
       run: |
           rebar3 compile
+          rebar3 escriptize
+          zip elvis.zip -r --junk-paths _build/default/bin/elvis
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
