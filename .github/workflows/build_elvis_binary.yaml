@@ -14,5 +14,5 @@ jobs:
       run: |
           set +e
           echo $pwd
-          ./build --in-docker
+          sudo ./build --in-docker
           ls -la
