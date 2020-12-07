@@ -12,8 +12,10 @@ jobs:
     - uses: actions/checkout@v1
     - name: build
       run: |
-          rebar3 escriptize
-          mv _build/default/bin/elvis .
+          set +e
+          docker info
+          docker run --rm -v "$(pwd):/src" --workdir /src erlang:21.3 rebar3 escriptize
+          sudo mv _build/default/bin/elvis .
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
