@@ -13,6 +13,5 @@ jobs:
     - name: build
       run: |
           set +e
-          echo $pwd
-          sudo ./build --in-docker
-          ls -la
+          docker info
+          ./build --in-docker
