@@ -13,7 +13,5 @@ jobs:
     - name: build
       run: |
           echo $pwd
-          docker run --rm -v "$(pwd)" --workdir / erlang:21.3 ./build.sh
-          rebar3 escriptize
-          mv _build/default/bin/elvis .
+          ./build --in-docker
           ls -la

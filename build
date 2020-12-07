@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+#set -ex
+#
+#rebar3 escriptize
+#mv _build/default/bin/elvis .
+
+set -euo pipefail
+
+if [ -t 1 ] ; then
+    maybeit="-it"
+else
+    maybeit=""
+fi
+
+# shellcheck disable=SC2093
+exec docker run $maybeit --rm -v "$(pwd):/src" --workdir /src erlang:21.3 ./build
+
+./bootstrap
