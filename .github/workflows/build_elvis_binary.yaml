@@ -14,4 +14,4 @@ jobs:
       run: |
           set +e
           docker info
-          ./build --in-docker
+          sudo ./build --in-docker
