@@ -14,4 +14,4 @@ jobs:
       run: |
           set +e
           docker info
-          sudo ./build --in-docker
+          docker run --rm -v "$(pwd):/src" --workdir /src erlang:21.3 ./build
