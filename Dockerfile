@@ -13,7 +13,7 @@ RUN chmod +x rebar3
 COPY . .
 
 RUN ls -la
-RUN ./rebar3 escriptize
+RUN rebar3 escriptize
 RUN mv _build/default/bin/elvis .
 
 # simply print out the version for visibility
