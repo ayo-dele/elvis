@@ -12,6 +12,7 @@ RUN chmod +x rebar3
 # copy the entire src over and build
 COPY . .
 
+RUN ls -la
 RUN ./rebar3 escriptize
 RUN mv _build/default/bin/elvis .
 
