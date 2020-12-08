@@ -14,7 +14,7 @@ jobs:
       run: |
           set +e
           docker info
-          docker run --rm -v "$(pwd):/src" --workdir /src erlang:21.3 escriptize
+          docker run --rm -v "$(pwd):/src" --workdir /src erlang:21.3 rebar3 escriptize
           mv _build/default/bin/elvis .
     - name: Create Release
       id: create_release
