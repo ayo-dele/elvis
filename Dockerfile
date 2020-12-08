@@ -4,6 +4,8 @@ FROM erlang:20.3.8.1-alpine
 #   https://docs.docker.com/engine/reference/builder/#workdir
 WORKDIR /root/elvis
 
+RUN apk update && apk --no-cache add curl
+
 RUN curl -lO https://github.com/emqx/rebar3/releases/download/3.14.3-emqx-1/rebar3
 RUN chmod +x rebar3
 
